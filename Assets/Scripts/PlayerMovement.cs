@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; //enum is a number
         pawn = GetComponent<CharacterController>();
         cam = GetComponentInChildren<Camera>();
     }
