@@ -66,11 +66,14 @@ public class DoorController : MonoBehaviour
     {
         if (animIsPlaying) return; // do nothing...
 
+        if (!Inventory.main.hasKey) // do nothing...
+            return;
+
 
         Vector3 disToPlayer = position - transform.position;
         disToPlayer = disToPlayer.normalized;
 
-        bool playerOnOtherSide = (Vector3.Dot(disToPlayer, transform.right) > 0f);
+        bool playerOnOtherSide = (Vector3.Dot(disToPlayer, transform.forward) < 0f);
         
         isClosed = !isClosed; //toggles state
 

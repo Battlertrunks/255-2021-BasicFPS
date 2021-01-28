@@ -17,11 +17,13 @@ public class RayCaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // Raycast is like a laser pointer
 
         // Did the uder click on this game tick?
         if (cam != null && Input.GetButtonDown("Fire1"))
         {
+
             // Shoot a ray into the scene
 
             Ray ray = new Ray(cam.transform.position, cam.transform.forward);
@@ -36,9 +38,11 @@ public class RayCaster : MonoBehaviour
 
                 DoorController door = hit.transform.GetComponentInParent<DoorController>();
                 if (door != null)
-                {
                     door.PlayerInteract(transform.parent.position);
-                }
+
+                ItemPickup pickup = hit.transform.GetComponent<ItemPickup>();
+                if (pickup != null)
+                    pickup.PlayerInteract();
 
             }
         }
